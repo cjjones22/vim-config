@@ -1,0 +1,20 @@
+color LiquidCarbon
+set wildmenu
+set wildmode=list:longest " turn on wild mode huge list
+set wildignore=*.pyo,*.pyc,*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png " ignore these
+set numberwidth=5 " Good up to 99999 lines
+set showcmd
+" These are for running ruby and rubydoctest on current file
+nnoremap <leader>rr :up\|execute "!ruby" shellescape(@%, 1)<CR>
+nnoremap <leader>rdt :up\|execute "!rubydoctest" shellescape(@%, 1)<CR>
+
+" For style offenses
+nnoremap <leader>ruc :up\|execute "!rubocop" shellescape(@%, 1)<CR>
+nnoremap <leader>ews :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+imap #rdt # doctest:<CR>>> <CR>=> <ESC>kkA
+
+if exists('+colorcolumn')
+  set colorcolumn=80    " display a line in column 80 to show you
+                        " where to line break.
+  hi ColorColumn ctermbg=0 ctermfg=200
+endif
